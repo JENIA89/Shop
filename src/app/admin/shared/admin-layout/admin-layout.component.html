@@ -1,6 +1,6 @@
 <nav class="navbar bg-dark">
   <h1 routerLink="/">Online Shop</h1>
-  <ul>
+  <ul *ngIf="auth.isAuth(); else login">
     <li routerLinkActive="active">
       <a [routerLink]="['/admin', 'dashboard']">Dashboard</a>
     </li>
@@ -11,12 +11,16 @@
       <a [routerLink]="['/admin', 'orders']">Orders</a>
     </li>
     <li routerLinkActive="active">
-      <a [routerLink]="['/admin', '']">Logout</a>
-    </li>
-    <li routerLinkActive="active">
-      <a [routerLink]="['/admin', 'login']">Login</a>
+      <a href="#" (click)="logout($event)">Logout</a>
     </li>
   </ul>
+  <ng-template #login>
+    <ul>
+      <li routerLinkActive="active">
+        <a [routerLink]="['/admin', 'login']">Login</a>
+      </li>
+    </ul>
+  </ng-template>
 </nav>
 <div class="container">
   <router-outlet></router-outlet>
