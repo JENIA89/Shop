@@ -1,4 +1,7 @@
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/shared/interfaces';
+import { ProductService } from 'src/app/shared/product.service';
 
 @Component({
   selector: 'app-add-page',
@@ -7,9 +10,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddPageComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup
+  isSubmitted = false
+
+  constructor(private productServ: ProductService) { }
 
   ngOnInit(): void {
+    this.inirForm()
   }
+
+  inirForm(){
+    this.form = new FormGroup({
+      type: new FormControl(null, Validators.required),
+      title: new FormControl(null, Validators.required),
+      photo: new FormControl(null, Validators.required),
+      info: new FormControl(null, Validators.required),
+      price: new FormControl(null, Validators.required),
+    })
+  }
+
+  submit(){
+    if(this.form.invalid) return
+
+    const product: Product = {
+      type: this.form.value.type,
+      title: this.form.value.title,
+      photo: this.form.value.photo,
+      info: this.form.value.info,
+      price: this.form.value.price,
+      date: new Date()
+  }
+
+  this.productServ.create(product).subscribe(()=>this.form.reset())
+}
 
 }
