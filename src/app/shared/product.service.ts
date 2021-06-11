@@ -40,4 +40,24 @@ export class ProductService {
       })
     )
   }
+
+  getById(id: string): Observable<Product>{
+    return this.http.get(`${environment.fbDbUrl}/products/${id}.json`)
+    .pipe(
+      map((res: Product)=>{
+        return{
+        ...res,
+        id,
+        date: new Date(res.date)
+      }})
+    )
+  }
+
+  update(product: Product){
+    return this.http.patch(`${environment.fbDbUrl}/products/${product.id}.json`, product)
+  }
+
+  remove(id: string){
+    return this.http.delete(`${environment.fbDbUrl}/products/${id}.json`)
+  }
 }

@@ -4,7 +4,7 @@
     <quill-view-html [content]="product.photo"></quill-view-html>
   </div>
   <h2>Price: {{ product.price }} $</h2>
-  <button [routerLink]="['/product', 'product.id']" class="btn btn-dark">
+  <button [routerLink]="['/product', product.id]" class="btn btn-dark">
     Open
   </button>
   <button [routerLink]="['/cart']" class="btn btn-dark">Add to cart</button>
