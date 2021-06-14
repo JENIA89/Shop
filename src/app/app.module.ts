@@ -12,6 +12,8 @@ import { CommonModule } from '@angular/common';
 import { AuthInterseptor } from './shared/auth.interseptor';
 import { ProductComponent } from './product/product.component';
 import { QuillModule } from 'ngx-quill';
+import { SortingPipe } from './shared/sorting.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -22,13 +24,16 @@ import { QuillModule } from 'ngx-quill';
     MainPageComponent,
     ProductPageComponent,
     CartPageComponent,
-    ProductComponent
+    ProductComponent,
+    SortingPipe,
   ],
   imports: [
     CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule, 
+    ReactiveFormsModule,
+    FormsModule,
     QuillModule.forRoot()
   ],
   providers: [

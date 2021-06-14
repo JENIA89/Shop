@@ -10,6 +10,9 @@ import { Product, fbCreateResponse } from './interfaces';
 })
 export class ProductService {
 
+  type: string = 'Phone'
+  cartProducts: Product[] = []
+
   constructor(
     private http: HttpClient
   ) { }
@@ -59,5 +62,13 @@ export class ProductService {
 
   remove(id: string){
     return this.http.delete(`${environment.fbDbUrl}/products/${id}.json`)
+  }
+
+  setType(type: string){
+    this.type = type
+  }
+
+  addProduct(product: Product){
+    this.cartProducts.push(product)
   }
 }

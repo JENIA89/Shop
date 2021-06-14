@@ -17,3 +17,14 @@ export interface Product {
 export interface fbCreateResponse {
     name: string
 }
+
+export interface Order {
+    name: string,
+    phone: string,
+    address: string,
+    payment: string,
+    orders: Array<any>,
+    price: number,
+    date: Date,
+    id?: string
+}

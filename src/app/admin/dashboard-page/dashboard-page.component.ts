@@ -13,7 +13,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   products: Product[] = []
   psub: Subscription
   dSub: Subscription
-
+  productName: string = ''
   constructor(private productServ: ProductService) { }
 
   ngOnInit(): void {
